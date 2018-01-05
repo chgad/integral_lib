@@ -49,38 +49,4 @@ class Integral(abc.ABC):
     def calc_stepsize(self):
         return (self.upper - self.lower)/self.N
 
-def x(x):
-    return x
-
-class Riemann_left_sum(Integral):
-
-    
-    def make_integration_space(self):
-        
-        space = []
-        i = self.lower
-
-        while ( i <= self.upper - self.stepsize ):
-
-            space.append(i)
-            i+= self.stepsize
-
-
-        return space
-
-    def integrate(self):
-
-        result = 0
-        
-        for step in self.space:
-            result += self.stepsize * self.function(step)
-
-        
-        return result
-
-func = Funktion(x)
-
-r = Riemann_left_sum(2.0,0.0,func)
-result = r.integrate()
-print(result)
 
